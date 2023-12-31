@@ -1,5 +1,5 @@
 from django.db import models
-
+import  random
 # Create your models here.
 diff_choice=(
     ('easy','easy'),
@@ -20,4 +20,9 @@ class Quiz(models.Model):
     # all the question for particular quiz
     # The default name for this reverse relation is the lowercase name of the model followed by "_set"
     def get_question(self):
-        return  self.question_set.all()[:self.number_of_qus]
+        # for suffle the question random
+        questions=list(self.question_set.all())
+        random.shuffle(questions)
+        return  questions[:self.number_of_qus]
+
+    # [: self.number_of_qus] limmit to  number of question means if 3 quest than it will display  only 3 if we set [: 2] it return randomly 2 ques
