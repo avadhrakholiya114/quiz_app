@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}
+home
+{% endblock title %}
+
+
+{% block content %}
+
+<!-- Modal -->
+<div class="modal fade" id="quizeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="h1">Quiz List</div>
+<hr>
+{% for obj in object_list %}
+<!--data-pk="{{obj.pk}}" we grab the pk in javascript -->
+<button class="btn btn-link modal-button" data-pk="{{obj.pk}}" data-quiz="{{obj.name}}"
+        data-question="{{obj.number_of_qus}}" data-difficulty="{{obj.difficulty}}" data-time="obj.time"
+        data-pass="obj.requierd_score_to_pass" data-bs-toggle="modal" data-bs-target="#quizeModal">
+    {{obj.name}}
+
+</button>
+{% endfor %}
+{% endblock content %}

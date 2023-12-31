@@ -18,5 +18,6 @@ class Quiz(models.Model):
         return f"{self.name}-{self.topic}"
 
     # all the question for particular quiz
+    # The default name for this reverse relation is the lowercase name of the model followed by "_set"
     def get_question(self):
-        return  self.question_set.all()
+        return  self.question_set.all()[:self.number_of_qus]
