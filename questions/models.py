@@ -13,7 +13,7 @@ class Question(models.Model):
 
     # all the answer for  particulat quizz
     def get_ans(self):
-        return  self.Answer_set.all()
+        return  self.answer_set.all()
 
 
 
