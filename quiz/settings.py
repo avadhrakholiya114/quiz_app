@@ -50,6 +50,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "django.middleware.csrf.CsrfViewMiddleware"
 ]
 
 ROOT_URLCONF = "quiz.urls"
@@ -123,8 +124,7 @@ STATICFILES_DIRS = [
     BASE_DIR / 'quizes' / 'static',
 ]
 
-MEDIA_ROOT = os.path.join(BASE_DIR, "media")
-MEDIA_URL = "/media/"
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

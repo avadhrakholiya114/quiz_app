@@ -7,7 +7,7 @@
 {% block content %}
 {{obj.name}}
 
-<form action="" id="quiz-form" class="mt-3 mb-3">
+<form action="" id="quiz-form" method="POST" class="mt-3 mb-3">
     {% csrf_token %}
     <div id="quiz_box">
 
