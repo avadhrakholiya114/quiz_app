@@ -14,7 +14,7 @@ modelButton.forEach(modelButton=>modelButton.addEventListener('click',()=>{
  ex :<button class="btn btn-link modal-button" data-pk="1" data-quiz="simple math" data-question="3" data-difficulty="easy" data-time="obj.time" data-pass="obj.requierd_score_to_pass" data-bs-toggle="modal" data-bs-target="#quizeModal"> simple math </button>
   console.log(modelButton)*/
   const pk =modelButton.getAttribute('data-pk')
-  console.log(pk)
+//  console.log(pk)
   const name =modelButton.getAttribute('data-quiz')
 
   const total_question =modelButton.getAttribute('data-question')

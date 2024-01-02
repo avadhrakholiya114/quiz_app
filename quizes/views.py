@@ -71,8 +71,8 @@ def save_quiz_view(request, pk):
         # basicaly it itreate the question dictonary and get key  wise ans means que wise ans
         for q in questionss:
             a_selected = request.POST.get(q.text)
-            # print("ans", a_selected)
-            if (a_selected != ""):
+            print("ans", a_selected)
+            if a_selected != "":
                 # it  get all answer for patricullar que
                 question_ans = Answer.objects.filter(question=q)
                 # loop all answer
@@ -87,13 +87,13 @@ def save_quiz_view(request, pk):
                             if a.correct:
                                 correct_answer = a.text
                 # question : ans : selected ans and this the case when user selected the answer
-                results.append({str(q): {'correcct_ans': correct_answer, 'answerd': a_selected}})
+                results.append({str(q): {'correct_ans': correct_answer, 'answerd': a_selected}})
             else:
                 results.append({str(q): 'Not Answerd'})
 
         score_ = score * multipler
         Result.objects.create(quiz=quiz, user=user, score=score_)
         if score_ >= quiz.requierd_score_to_pass:
-            return JsonResponse({'passed': True, 'score': score_, 'result': results})
+            return JsonResponse({'passed': True, 'score': score_, 'results': results})
         else:
-            return JsonResponse({'passed': False, 'score': score_, 'result': results})
+            return JsonResponse({'passed': False, 'score': score_, 'results': results})
