@@ -1,6 +1,63 @@
 const url = window.location.href
 //console.log(url)
 const quiz = document.getElementById('quiz_box')
+const timer_box = document.getElementById('timer')
+    const activatetimer=(time)=>{
+//        console.log(time)
+
+        if(time.toString().length<2)
+        {
+        timer_box.innerHTML=`<b>0${time}:00</b>`
+        }
+        else
+        {
+            timer_box.innerHTML=`<b>${time}:00</b>`
+        }
+         let minutes = time -1
+         let seconds=60
+         let display_sec
+         let display_min
+
+         const timer= setInterval(()=>{
+//        console.log("i am i am")
+             seconds--
+             if(seconds<0)
+             {
+             seconds=59
+             minutes--
+             }
+             if(minutes.toString().length<2)
+             {
+                display_min='0'+minutes
+             }
+             else
+             {
+             display_min=minutes
+             }
+
+             if(seconds.toString().length<2)
+             {
+             display_sec='0'+seconds
+             }
+             else
+             {
+             display_sec=seconds
+             }
+             if(minutes==0 && seconds==0)
+             {
+                timer_box.innerHTML="<b>00:00</b>"
+                setTimeout(()=>{
+                     clearInterval(timer)
+        alert("your time is overr")
+            sendData();
+
+                },500)
+
+             }
+             timer_box.innerHTML=`<b>${display_min}:${display_sec}<b>`
+
+         },1000)
+     }
 $.ajax({
     type: 'GET',
     url: `${url}data`,
@@ -31,11 +88,14 @@ $.ajax({
                 })
             }
         });
+        activatetimer(response.time)
     },
     error: function (error) {
         console.log(error)
     }
 })
+
+
 
 const quiz_form = document.getElementById('quiz-form')
 const scoreBox=document.getElementById('score_box')
@@ -61,6 +121,9 @@ const sendData = () => {
         }
     });
     //    console.log('Sending data:', data);
+
+
+
 
     $.ajax({
         type: 'POST',

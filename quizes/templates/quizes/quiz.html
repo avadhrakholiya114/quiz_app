@@ -6,9 +6,18 @@
 
 {% block content %}
 
-<b>{{obj.name}}</b>
-<p>Score to Pass : {{obj.requierd_score_to_pass}}%</p>
-<form  id="quiz-form"  class="mt-3 mb-3">
+<div class="row">
+
+    <div class="col">
+        <b>{{obj.name}}</b>
+        <p>Score to Pass : {{obj.requierd_score_to_pass}}%</p>
+    </div>
+    <div class="col text-right" id="timer">COUNTDOWN</div>
+</div>
+
+<a href="{% url 'quizes:main-view' %}" class="btn btn-danger"> Go Back</a>
+
+<form id="quiz-form" class="mt-3 mb-3">
     {% csrf_token %}
     <div id="quiz_box">
 
@@ -20,5 +29,5 @@
 {% endblock content %}
 
 {% block scripts %}
-<script src="{% static 'quizes/quiz.js' %}" ></script>
+<script src="{% static 'quizes/quiz.js' %}"></script>
 {% endblock scripts %}
