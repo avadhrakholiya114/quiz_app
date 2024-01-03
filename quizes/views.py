@@ -60,7 +60,10 @@ def save_quiz_view(request, pk):
         # list of question obj
         print(questionss)
 
-        user = request.user
+        if request.user.is_authenticated:
+            user = request.user
+        else:
+            user = None
         quiz = Quiz.objects.get(pk=pk)
 
         score = 0

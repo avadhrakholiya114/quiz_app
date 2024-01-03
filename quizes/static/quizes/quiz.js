@@ -48,8 +48,8 @@ const timer_box = document.getElementById('timer')
                 timer_box.innerHTML="<b>00:00</b>"
                 setTimeout(()=>{
                      clearInterval(timer)
-        alert("your time is overr")
-            sendData();
+               alert("your time is overr")
+                sendData()
 
                 },500)
 
